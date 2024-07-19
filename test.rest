@@ -1,0 +1,51 @@
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+"fullName": "John Doe",
+"email": "ikpaprecious2@gmail.com",
+"password": "12345"
+}
+
+
+//verify email with token as params
+###
+GET http://localhost:5000/auth/verify-email/b721afe7-1dba-4e39-a619-36618b97244d
+
+
+//login with email and password as payload
+###
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+"email": "preciousspring09@gmail.com",
+"password": "123456"
+}
+
+
+//forget oassword with email as payload
+###
+POST http://localhost:5000/auth/forget-password
+Content-Type: application/json
+
+{
+"email": "preciousspring09@gmail.com"
+}
+
+
+//reset user password with token as params
+###
+POST http://localhost:5000/auth/reset-password/e39c0286-1ecd-4bfb-8f8a-035a8d25f624
+Content-Type: application/json
+
+{
+"newPassword": "123456"
+}
+
+
+//get user profiile with authorization
+###
+GET http://localhost:5000/auth/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njg2NzEwMzQ1N2Q1MWJkYWIzNWJiNDkiLCJlbWFpbCI6InByZWNpb3Vzc3ByaW5nMDlAZ21haWwuY29tIiwiaWF0IjoxNzIwMTUzMjcyfQ.RbyQC9eAmrwE3sIZb0UjcVroLaoe8SnUpX5tsczvutg
