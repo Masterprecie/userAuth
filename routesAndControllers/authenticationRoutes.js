@@ -38,7 +38,7 @@ authRouter.post("/register", async (req, res) => {
     await sendEmail(
       email,
       "Email Verification",
-      `${fullName} Please Click on this link to verify your email: http://localhost:5000/auth/verify-email/${token}`
+      `${fullName} Please Click on this link to verify your email: https://userauth-dhcc.onrender.com/auth/verify-email/${token}`
     );
 
     res.status(201).send({
@@ -170,7 +170,7 @@ authRouter.post("/forget-password", async (req, res) => {
       token,
     }).save();
 
-    const resetPasswordLink = `http://localhost:5000/auth/reset-password/${token}`;
+    const resetPasswordLink = `https://userauth-dhcc.onrender.com/auth/reset-password/${token}`;
 
     await sendEmail(
       email,

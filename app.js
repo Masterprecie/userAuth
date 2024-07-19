@@ -18,6 +18,10 @@ mongoose
     console.log("Failed to connect to MongoDB", err);
   });
 
+app.get("/", (req, res) => {
+  res.send("Welcome to Task 5 deployment");
+});
+
 app.use("/auth", authRoute);
 
 app.listen(process.env.PORT, () => {
