@@ -1,4 +1,4 @@
-POST http://localhost:5000/auth/register
+POST https://userauth-dhcc.onrender.com/auth/register
 Content-Type: application/json
 
 {
@@ -10,12 +10,12 @@ Content-Type: application/json
 
 //verify email with token as params
 ###
-GET http://localhost:5000/auth/verify-email/b721afe7-1dba-4e39-a619-36618b97244d
+GET https://userauth-dhcc.onrender.com/auth/verify-email/b721afe7-1dba-4e39-a619-36618b97244d
 
 
 //login with email and password as payload
 ###
-POST http://localhost:5000/auth/login
+POST https://userauth-dhcc.onrender.com/auth/login
 Content-Type: application/json
 
 {

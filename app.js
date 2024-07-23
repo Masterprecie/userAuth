@@ -9,6 +9,8 @@ app.use(express.urlencoded({ extended: false }));
 
 //Connect to MongoDB
 
+console.log(process.env.MONGODB_URL);
+
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => {

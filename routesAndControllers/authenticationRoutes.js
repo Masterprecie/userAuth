@@ -43,7 +43,8 @@ authRouter.post("/register", async (req, res) => {
 
     res.status(201).send({
       isSuccessful: true,
-      message: "User registered successfully",
+      message:
+        "User registered successfully, please check your email for verification",
     });
   } catch (error) {
     res.status(500).send({
@@ -71,13 +72,34 @@ authRouter.get("/verify-email/:token", async (req, res) => {
       return;
     }
 
-    await userModel.findOneAndUpdate({
-      authToken: token,
-      authPurpose: "verify-email",
-      isEmailVerified: true,
-      authToken: "",
-      authPurpose: "",
-    });
+    const updateUser = await userModel.findOneAndUpdate(
+      {
+        authToken: token,
+        authPurpose: "verify-email",
+      },
+      {
+        isEmailVerified: true,
+        authToken: "",
+        authPurpose: "",
+      },
+      { new: true }
+    );
+
+    // await userModel.findOneAndUpdate({
+    //   authToken: token,
+    //   authPurpose: "verify-email",
+    //   isEmailVerified: true,
+    //   authToken: "",
+    //   authPurpose: "",
+    // });
+
+    if (!updateUser) {
+      res.status(500).send({
+        isSuccessful: false,
+        message: "An error occurred during email verification",
+      });
+      return;
+    }
 
     res.send({
       isSuccessful: true,
